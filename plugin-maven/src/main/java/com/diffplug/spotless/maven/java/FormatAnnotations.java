@@ -15,6 +15,8 @@
  */
 package com.diffplug.spotless.maven.java;
 
+import java.util.ArrayList;
+
 import com.diffplug.spotless.FormatterStep;
 import com.diffplug.spotless.java.FormatAnnotationsStep;
 import com.diffplug.spotless.maven.FormatterStepConfig;
@@ -24,6 +26,7 @@ public class FormatAnnotations implements FormatterStepFactory {
 
 	@Override
 	public FormatterStep newFormatterStep(FormatterStepConfig config) {
-		return FormatAnnotationsStep.create();
+		// TODO: Permit customization in Maven.
+		return FormatAnnotationsStep.create(new ArrayList<>(), new ArrayList<>());
 	}
 }

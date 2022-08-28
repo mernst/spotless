@@ -159,10 +159,11 @@ spotless {
 
     removeUnusedImports()
 
-    googleJavaFormat() // has its own section below
-    eclipse()          // has its own section below
-    prettier()         // has its own section below
-    clangFormat()      // has its own section below
+    // Choose one of these formatters.
+    googleJavaFormat()   // has its own section below
+    eclipse()            // has its own section below
+    prettier()           // has its own section below
+    clangFormat()        // has its own section below
 
     formatAnnotations()  // fixes formatting of type annotations, see below
 
@@ -286,9 +287,14 @@ spotless {
 This does not re-order annotations, it just removes incorrect newlines.
 
 A type annotation is an annotation that is meta-annotated with `@Target({ElementType.TYPE_USE})`.
-Because Spotless cannot necessarily examine the annotation definition, it uses a hard-coded
-list of well-known type annotations.  You can make a pull request to add new ones.
-In the future there will be mechanisms to add/remove annotations from the list.
+Spotless has a default list of well-known type annotations.
+You can use `addTypeAnnotation()` and `removeTypeAnnotation()` to override its defaults:
+
+```gradle
+    formatAnnotations().addTypeAnnotation("Empty").addTypeAnnotation("NonEmpty").removeTypeAnnotation("Localized")
+```
+
+You can make a pull request to add new annotations to Spotless's default list.
 
 
 <a name="applying-to-groovy-source"></a>

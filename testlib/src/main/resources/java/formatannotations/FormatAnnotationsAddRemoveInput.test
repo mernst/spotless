@@ -65,13 +65,4 @@ class FormatAnnotationsTest {
   @Regex(2)
   @Interned
   String m6() {}
-
-  @Empty
-  String e;
-
-  @NonEmpty
-  String ne;
-
-  @Localized
-  String localized;
 }

@@ -35,6 +35,12 @@ class FormatAnnotationsStepTest extends ResourceHarness {
 	}
 
 	@Test
+	void formatAnnotationsAddRemove() throws Throwable {
+		FormatterStep step = FormatAnnotationsStep.create().addTypeAnnotation("Empty").addTypeAnnotation("NonEmpty").removeTypeAnnotation("Localized");
+		assertOnResources(step, "java/formatannotations/FormatAnnotationsAddRemoveInput.test", "java/formatannotations/FormatAnnotationsAddRemoveOutput.test");
+	}
+
+	@Test
 	void doesntThrowIfFormatAnnotationsIsntSerializable() {
 		FormatAnnotationsStep.create();
 	}

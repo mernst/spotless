@@ -1,0 +1,11 @@
+class FormatAnnotationsTest {
+
+  @Empty
+  String e;
+
+  @NonEmpty
+  String ne;
+
+  @Localized
+  String localized;
+}
