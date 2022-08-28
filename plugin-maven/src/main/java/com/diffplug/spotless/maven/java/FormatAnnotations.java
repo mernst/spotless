@@ -15,7 +15,7 @@
  */
 package com.diffplug.spotless.maven.java;
 
-import java.util.ArrayList;
+import java.util.Collections;
 
 import com.diffplug.spotless.FormatterStep;
 import com.diffplug.spotless.java.FormatAnnotationsStep;
