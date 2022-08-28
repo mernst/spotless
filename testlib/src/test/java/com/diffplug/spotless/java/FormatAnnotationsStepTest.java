@@ -15,6 +15,8 @@
  */
 package com.diffplug.spotless.java;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 import com.diffplug.spotless.FormatterStep;
@@ -36,7 +38,7 @@ class FormatAnnotationsStepTest extends ResourceHarness {
 
 	@Test
 	void formatAnnotationsAddRemove() throws Throwable {
-		FormatterStep step = FormatAnnotationsStep.create().addTypeAnnotation("Empty").addTypeAnnotation("NonEmpty").removeTypeAnnotation("Localized");
+		FormatterStep step = FormatAnnotationsStep.create(Arrays.asList("Empty", "NonEmpty"), Arrays.asList("Localized"));
 		assertOnResources(step, "java/formatannotations/FormatAnnotationsAddRemoveInput.test", "java/formatannotations/FormatAnnotationsAddRemoveOutput.test");
 	}
 

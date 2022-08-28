@@ -250,12 +250,14 @@ public class JavaExtension extends FormatExtension implements HasBuiltinDelimite
 		public FormatAnnotationsConfig addTypeAnnotation(String simpleName) {
 			Objects.requireNonNull(simpleName);
 			addedTypeAnnotations.add(simpleName);
+			replaceStep(createStep());
 			return this;
 		}
 
 		public FormatAnnotationsConfig removeTypeAnnotation(String simpleName) {
 			Objects.requireNonNull(simpleName);
 			removedTypeAnnotations.add(simpleName);
+			replaceStep(createStep());
 			return this;
 		}
 

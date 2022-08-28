@@ -17,6 +17,7 @@ package com.diffplug.spotless.java;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -382,6 +383,10 @@ public final class FormatAnnotationsStep {
 
 	static final String NAME = "No line break between type annotation and type";
 
+	public static FormatterStep create() {
+		return create(Collections.emptyList(), Collections.emptyList());
+	}
+
 	public static FormatterStep create(List<String> addedTypeAnnotations, List<String> removedTypeAnnotations) {
 		return FormatterStep.create(NAME, new State(addedTypeAnnotations, removedTypeAnnotations), State::toFormatter);
 	}
@@ -393,7 +398,7 @@ public final class FormatAnnotationsStep {
 	private static final class State implements Serializable {
 		private static final long serialVersionUID = 1L;
 
-		private static final Set<String> typeAnnotations = new HashSet<>(defaultTypeAnnotations);
+		private final Set<String> typeAnnotations = new HashSet<>(defaultTypeAnnotations);
 
 		// group 1 is the basename of the annotation.
 		private static final String annoNoArgRegex = "@(?:[A-Za-z_][A-Za-z0-9_.]*\\.)?([A-Za-z_][A-Za-z0-9_]*)";
