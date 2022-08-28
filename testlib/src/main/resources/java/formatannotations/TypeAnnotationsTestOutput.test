@@ -1,4 +1,4 @@
-class TypeAnnotationsTest {
+class FormatAnnotationsTest {
 
   public @Nullable String s0 = null;
 

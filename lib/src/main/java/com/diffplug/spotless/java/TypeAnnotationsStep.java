@@ -34,8 +34,8 @@ import com.diffplug.spotless.FormatterStep;
  * <p>
  * Note: A type annotation is an annotation that is meta-annotated with {@code @Target({ElementType.TYPE_USE})}.
  */
-public final class TypeAnnotationsStep {
-	private TypeAnnotationsStep() {}
+public final class FormatAnnotationsStep {
+	private FormatAnnotationsStep() {}
 
 	static final String NAME = "No line break between type annotation and type";
 
@@ -43,7 +43,7 @@ public final class TypeAnnotationsStep {
 		return FormatterStep.create(NAME, new State(), State::toFormatter);
 	}
 
-	// TODO: Enable users to specify more type annotations in `typeAnnotations` in build.gradle.
+	// TODO: Enable users to specify more type annotations in `formatAnnotations` in build.gradle.
 	// TODO: Read from a local .type-annotations file.
 	private static final class State implements Serializable {
 		private static final long serialVersionUID = 1L;
@@ -52,7 +52,7 @@ public final class TypeAnnotationsStep {
 		 * These are type annotations, which should NOT go on their own line.
 		 * A type annotation's {@code @Target} annotation contains {@code TYPE_USE}.
 		 */
-		private static final Set<String> typeAnnotations = new HashSet<>(
+		private static final Set<String> formatAnnotations = new HashSet<>(
 				Arrays.asList(
 						// Type annotations from the Checker Framework and all the tools it
 						// supports, including FindBugs, JetBrains (IntelliJ), Eclipse, NetBeans,
@@ -407,7 +407,7 @@ public final class TypeAnnotationsStep {
 		State() {}
 
 		FormatterFunc toFormatter() {
-			return unixStr -> fixupTypeAnnotations(unixStr);
+			return unixStr -> fixupFormatAnnotations(unixStr);
 		}
 
 		/**
@@ -416,7 +416,7 @@ public final class TypeAnnotationsStep {
 		 * @param the text of a Java file
 		 * @return corrected text of the Java file
 		 */
-		String fixupTypeAnnotations(String unixStr) {
+		String fixupFormatAnnotations(String unixStr) {
 			// Each element of `lines` ends with a newline.
 			String[] lines = unixStr.split("((?<=\n))");
 			for (int i = 0; i < lines.length - 1; i++) {
@@ -435,7 +435,7 @@ public final class TypeAnnotationsStep {
 
 		/**
 		 * Returns true if the line ends with a type annotation.
-		 * TypeAnnotationStep fixes such formatting.
+		 * FormatAnnotationsStep fixes such formatting.
 		 */
 		boolean endsWithTypeAnnotation(String unixLine) {
 			// Remove trailing newline.
@@ -451,7 +451,7 @@ public final class TypeAnnotationsStep {
 				return false;
 			}
 
-			return typeAnnotations.contains(basename);
+			return formatAnnotations.contains(basename);
 		}
 	}
 }

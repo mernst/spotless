@@ -21,22 +21,22 @@ import com.diffplug.spotless.FormatterStep;
 import com.diffplug.spotless.ResourceHarness;
 import com.diffplug.spotless.SerializableEqualityTester;
 
-class TypeAnnotationsStepTest extends ResourceHarness {
+class FormatAnnotationsStepTest extends ResourceHarness {
 	@Test
-	void typeAnnotations() throws Throwable {
-		FormatterStep step = TypeAnnotationsStep.create();
-		assertOnResources(step, "java/typeannotations/TypeAnnotationsTestInput.test", "java/typeannotations/TypeAnnotationsTestOutput.test");
+	void formatAnnotations() throws Throwable {
+		FormatterStep step = FormatAnnotationsStep.create();
+		assertOnResources(step, "java/formatannotations/FormatAnnotationsTestInput.test", "java/formatannotations/FormatAnnotationsTestOutput.test");
 	}
 
 	@Test
-	void typeAnnotationsInComments() throws Throwable {
-		FormatterStep step = TypeAnnotationsStep.create();
-		assertOnResources(step, "java/typeannotations/TypeAnnotationsInCommentsInput.test", "java/typeannotations/TypeAnnotationsInCommentsOutput.test");
+	void formatAnnotationsInComments() throws Throwable {
+		FormatterStep step = FormatAnnotationsStep.create();
+		assertOnResources(step, "java/formatannotations/FormatAnnotationsInCommentsInput.test", "java/formatannotations/FormatAnnotationsInCommentsOutput.test");
 	}
 
 	@Test
-	void doesntThrowIfTypeAnnotationsIsntSerializable() {
-		TypeAnnotationsStep.create();
+	void doesntThrowIfFormatAnnotationsIsntSerializable() {
+		FormatAnnotationsStep.create();
 	}
 
 	@Test
@@ -49,7 +49,7 @@ class TypeAnnotationsStepTest extends ResourceHarness {
 
 			@Override
 			protected FormatterStep create() {
-				return TypeAnnotationsStep.create();
+				return FormatAnnotationsStep.create();
 			}
 		}.testEquals();
 	}

@@ -118,7 +118,7 @@ spotless {
     // apply a specific flavor of google-java-format
     googleJavaFormat('1.8').aosp().reflowLongStrings()
     // fix formatting of type annotations
-    typeAnnotations()
+    formatAnnotations()
     // make sure every file has the following copyright header.
     // optionally, Spotless can set copyright years by digging
     // through git history (see "license" section below)
@@ -164,7 +164,7 @@ spotless {
     prettier()         // has its own section below
     clangFormat()      // has its own section below
 
-    typeAnnotations()  // fixes formatting of type annotations, see below
+    formatAnnotations()  // fixes formatting of type annotations, see below
 
     licenseHeader '/* (C) $YEAR */' // or licenseHeaderFile
   }
@@ -193,7 +193,7 @@ spotless {
     //   and/or use custom group artifact (you probably don't need this)
     googleJavaFormat('1.8').aosp().reflowLongStrings().groupArtifact('com.google.googlejavaformat:google-java-format')
     // optional: fix formatting of type annotations
-    typeAnnotations()
+    formatAnnotations()
 ```
 
 **⚠️ Note on using Google Java Format with Java 16+**
@@ -221,7 +221,7 @@ spotless {
     // optional: you can specify a specific version
     palantirJavaFormat('2.9.0')
     // optional: fix formatting of type annotations
-    typeAnnotations()
+    formatAnnotations()
 ```
 
 **⚠️ Note on using Palantir Java Format with Java 16+**
@@ -272,13 +272,13 @@ However, some tools format them incorrectly, like this:
   String s;
 ```
 
-To fix the incorrect formatting, add the `typeAnnotations()` rule after a Java formatter.  For example:
+To fix the incorrect formatting, add the `formatAnnotations()` rule after a Java formatter.  For example:
 
 ```gradle
 spotless {
   java {
     googleJavaFormat()
-    typeAnnotations()
+    formatAnnotations()
   }
 }
 ```
