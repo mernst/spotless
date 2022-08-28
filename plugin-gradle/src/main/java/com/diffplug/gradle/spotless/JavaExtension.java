@@ -234,12 +234,6 @@ public class JavaExtension extends FormatExtension implements HasBuiltinDelimite
 
 	}
 
-	/*
-	public void formatAnnotations() {
-	addStep(FormatAnnotationsStep.create());
-	}
-	*/
-
 	/** Removes newlines between type annotations and types. */
 	public FormatAnnotationsConfig formatAnnotations() {
 		return new FormatAnnotationsConfig();
